@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DigiMedia - Digital Media Agency</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+body {
+    background: #ffffff;
+    color: #333;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Top Bar */
+.top-bar {
+    background: #f8f8f8;
+    padding: 20px 60px;
+    display: flex;
+    font-size: 14px;
+    color: #777;
+ 
+.top-header {
+    background: #f8f8f8;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 14px;
+  }
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 8px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+.header-right span {
+    margin-right: 20px;
+    color: #666;
+  }
+
+.header-right i {
+    margin-right: 6px;
+    color: #999;
+  }
+
+.header-right a {
+    color: #999;
+    margin-left: 12px;
+    font-size: 15px;
+    transition: color 0.3s ease;
+    text-decoration: none;
+  }
+
+.header-right a:hover {
+    color: #ff4a57;
+  }
+
+}
+  
+  
+/* Header */
+header {
+    padding: 8px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: right;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 700;
+    color: #ff4d8d;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.btn {
+    padding: 10px 22px;
+    border-radius: 30px;
+    border: 1px solid #ff4d8d;
+    background: #fff;
+    color: #ff4d8d;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px;
+}
+
+.hero-text {
+    width: 50%;
+}
+
+.hero-text h5 {
+    color: #ff4d8d;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.hero-text h1 {
+    font-size: 35px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    color: #777;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.hero-image {
+    width: 50%;
+    text-align: right;
+}
+
+.hero-image img {
+    max-width: 80%;
+}
+
+/* Responsive */
+@media(max-width: 1200px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-text, .hero-image {
+        width: 100%;
+    }
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+  
+</style>
+</head>
+<body>
+
+<!-- Top Info Bar -->
+<div class="top-bar">
+    <div>📧 digimedia@company.com</div>
+    <div>📞 000000000</div>
+    <div class="header-right">
+      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#"><i class="fa-brands fa-behance"></i></a>
+      <a href="#"><i class="fa-brands fa-twitter"></i></a>
+      <a href="#"><i class="fa-brands fa-dribbble"></i></a>
+    </div>
+</div>
+
+<!-- Header -->
+<header>
+    <div class="logo">DigiMedia</div>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+            <button class="btn">Free Quote</button>
+        </ul>
+    </nav>
+    
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-text">
+        <h5>DIGITAL MEDIA AGENCY</h5>
+        <h1>We Boost Your Website Traffic</h1>
+        <p>
+            This template is brought to you by TemplateMo website.
+            Feel free to use this for a commercial purpose.
+            You are not allowed to redistribute the template ZIP file
+            on any other template website. Thank you.
+        </p>
+       <button class="btn">Free Quote</button>
+    </div>
+
+    <div class="hero-image">
+        <img src="f:\intership\photo.jpeg" alt="SEO Illustration">
+    </div>
+</section>
+
+</body>
+</html>
