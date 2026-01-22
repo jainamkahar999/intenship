@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Signup Smooth</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: #fff;
+}
+
+.main {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* GREEN PANEL */
+.bg-side {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background: #58a98d;
+  border-radius: 0 0 500px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.55s ease-in-out;
+  z-index: 3;
+}
+
+.bg-side h1 {
+  color: #fff;
+  font-size: 70px;
+  font-weight: 800;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* FORM AREA */
+.form-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.container {
+  width: 400px;
+  background: #fff;
+  padding: 40px;
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+form {
+  display: none;
+  flex-direction: column;
+}
+
+form.active {
+  display: flex;
+}
+
+input {
+  padding: 15px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: none;
+  background: #f0f0f0;
+}
+
+button {
+  margin-top: 15px;
+  padding: 15px;
+  border: none;
+  background: #58a98d;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.links {
+  font-size: 12px;
+  margin-top: 15px;
+}
+
+.links span {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ===== ANIMATION STATES ===== */
+
+/* FULLSCREEN GREEN */
+.main.expand .bg-side {
+  width: 100%;
+  border-radius: 0;
+}
+
+.main.expand .form-wrapper {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* SIGNUP POSITION */
+.main.signup .bg-side {
+  left: 40%;
+  width: 60%;
+  border-radius: 0 0 0 500px;
+}
+
+.main.signup .form-wrapper {
+  right: 60%;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* MOBILE */
+@media(max-width:900px) {
+  .bg-side {
+    width: 100%;
+    height: 40%;
+    border-radius: 0 0 50% 50%;
+  }
+
+  .form-wrapper {
+    width: 100%;
+    height: 60%;
+    bottom: 0;
+    right: 0;
+  }
+
+  .main.expand .bg-side,
+  .main.signup .bg-side {
+    width: 100%;
+    left: 0;
+    border-radius: 0 0 50% 50%;
+  }
+
+  .main.signup .form-wrapper {
+    right: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="main" id="main">
+
+  <div class="bg-side">
+    <h1 id="titleText">Welcome</h1>
+  </div>
+
+  <div class="form-wrapper">
+    <div class="container">
+
+      <!-- LOGIN -->
+      <form id="loginForm" class="active">
+        <input type="text" placeholder="Username">
+        <input type="password" placeholder="Password">
+        <button>Sign in</button>
+        <div class="links">
+          Don’t have an account?
+          <span onclick="goSignup()"> Sign up here</span>
+        </div>
+      </form>
+
+      <!-- SIGNUP -->
+      <form id="signupForm">
+        <input type="text" placeholder="Full Name">
+        <input type="email" placeholder="Email">
+        <input type="password" placeholder="Password">
+        <button>Create Account</button>
+        <div class="links">
+          Already have an account?
+          <span onclick="goLogin()"> Sign in here</span>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+const main = document.getElementById("main");
+const loginForm = document.getElementById("loginForm");
+const signupForm = document.getElementById("signupForm");
+const title = document.getElementById("titleText");
+
+const DURATION = 550; // faster green animation
+
+function animateSwitch(toSignup) {
+  main.classList.add("expand");
+  title.style.opacity = "0";
+  title.style.transform = "scale(0.9)";
+
+  setTimeout(() => {
+    if (toSignup) {
+      loginForm.classList.remove("active");
+      signupForm.classList.add("active");
+      title.textContent = "Join Us";
+      main.classList.add("signup");
+    } else {
+      signupForm.classList.remove("active");
+      loginForm.classList.add("active");
+      title.textContent = "Welcome";
+      main.classList.remove("signup");
+    }
+
+    title.style.opacity = "1";
+    title.style.transform = "scale(1)";
+    main.classList.remove("expand");
+  }, DURATION);
+}
+
+function goSignup() {
+  animateSwitch(true);
+}
+
+function goLogin() {
+  animateSwitch(false);
+}
+</script>
+
+</body>
+</html>
