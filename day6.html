@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education Landing Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset & Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        :root {
+            --bg-cream: #fdf8e9;
+            --primary-black: #111111;
+            --accent-yellow: #f4be37;
+            --text-gray: #666666;
+            --card-purple: #efefff;
+            --card-yellow: #fff9e6;
+            --card-pink: #ffeff3;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: var(--primary-black);
+            line-height: 1.6;
+        }
+
+        /* Header Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background-color: var(--bg-cream);
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            cursor: default;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        .signup-btn {
+            background: var(--primary-black);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            background-color: var(--bg-cream);
+            padding: 50px 8% 0 8%;
+            align-items: center;
+            overflow: hidden;
+            cursor: default;
+        }
+
+        .hero-content {
+            flex: 1;
+            padding-bottom: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            font-weight: 800;
+        }
+
+        .hero-content p {
+            color: var(--text-gray);
+            max-width: 450px;
+            margin-bottom: 30px;
+        }
+
+        /* Email Form */
+        .email-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .email-form input {
+            padding: 15px 20px;
+            border: none;
+            border-radius: 8px;
+            width: 250px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .email-form button {
+            background: var(--primary-black);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* Stats */
+        .stats {
+            display: flex;
+            gap: 40px;
+            cursor: default;
+        }
+
+        .stat-item h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+
+        .stat-item p {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+        }
+
+        /* Hero Image Area */
+        .hero-image-container {
+            flex: 1;
+            position: relative;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+        }
+
+        .yellow-circle {
+            background-color: var(--accent-yellow);
+            width: 450px;
+            height: 550px;
+            border-radius: 250px 250px 0 0;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .hero-img {
+            width: 110%; /* Makes image pop out of container slightly */
+            height: auto;
+            position: absolute;
+            bottom: 0;
+        }
+
+        /* Logos Section */
+        .logos {
+            background-color: #666666;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 40px 8%;
+            filter: grayscale(100%);
+            opacity: 0.5;
+        }
+
+        .logos span {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 8%;
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+        }
+
+        .card-container {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .card {
+            flex: 1;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .card.purple { background-color: var(--card-purple); }
+        .card.yellow { background-color: var(--card-yellow); }
+        .card.pink { background-color: var(--card-pink); }
+
+        .card h4 { font-size: 1.4rem; }
+        .card p { color: var(--text-gray); font-size: 0.95rem; }
+
+        .btn-more {
+            margin-top: 15px;
+            background: transparent;
+            border: 1px solid rgba(0,0,0,0.1);
+            padding: 8px 15px;
+            width: fit-content;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero, .card-container { flex-direction: column; }
+            .hero-content { text-align: center; }
+            .hero-content p { margin: 0 auto 30px auto; }
+            .email-form { justify-content: center; }
+            .stats { justify-content: center; }
+            .yellow-circle { width: 300px; height: 350px; margin-top: 50px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Education</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Support</a></li>
+                <li><a href="#">Press</a></li>
+                <li><a href="#">Blog</a></li>
+            </ul>
+        </nav>
+        <a href="#" class="signup-btn">Sign up</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>It's Now Easier<br>to Get Quality<br>Education</h1>
+            <p>Connect in real time with the most effective peer-to-peer texting tool for higher education.</p>
+            
+            <form class="email-form" id="notifyForm">
+                <input type="email" placeholder="Type your email" required>
+                <button type="submit">Submit</button>
+            </form>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <h3>14k+</h3>
+                    <p>Total Courses</p>
+                </div>
+                <div class="stat-item">
+                    <h3>700+</h3>
+                    <p>Expert Mentors</p>
+                </div>
+                <div class="stat-item">
+                    <h3>8k+</h3>
+                    <p>Students Globally</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-image-container">
+            <div class="yellow-circle">
+                <img src="c:\Users\ABC\Downloads\j2.jpeg" alt="Student" class="hero-img">
+            </div>
+        </div>
+    </section>
+
+    <section class="logos">
+        <span>Sprint</span>
+        <span>Google</span>
+        <span>Gillette</span>
+        <span>Forbes</span>
+        <span>Etsy</span>
+    </section>
+
+    <section class="features">
+        <h2>Empowering Modern Day Education</h2>
+        <div class="card-container">
+            <div class="card purple">
+                <h4>Teachers</h4>
+                <p>Bring the power of the digital age into your classroom. Enable your students to make innovative school projects.</p>
+                <button class="btn-more">See more</button>
+            </div>
+            <div class="card yellow">
+                <h4>Students</h4>
+                <p>Get bold and creative with your school assignments. Flipsnack allows you to unleash your imagination easily.</p>
+                <button class="btn-more">See more</button>
+            </div>
+            <div class="card pink">
+                <h4>Schools</h4>
+                <p>Publish appealing school prospectus, handbooks and admission guides to inform students and parents.</p>
+                <button class="btn-more">See more</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Simple Form Submission Interaction
+        document.getElementById('notifyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input').value;
+            alert('Thank you! We will reach out to ' + email + ' shortly.');
+            this.reset();
+        });
+
+        // Add subtle scroll animation
+        window.addEventListener('scroll', () => {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                if(cardTop < window.innerHeight - 100) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
