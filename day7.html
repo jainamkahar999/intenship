@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esther Howard | Creative Portfolio & Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f0f0f;
+            --card-bg: #121212;
+            --primary-blue: #3d5afe;
+            --accent-purple: #7c4dff;
+            --text-dim: #a0a0a0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* --- Header Blur Effect --- */
+        header {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* --- Service Cards (Merged Style) --- */
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid #1f1f1f;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card:hover {
+            border-color: var(--primary-blue);
+            transform: translateY(-5px);
+        }
+        .service-card::before {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: -10px;
+            width: 80px;
+            height: 80px;
+            background: repeating-linear-gradient(45deg, #1a1a1a, #1a1a1a 2px, transparent 2px, transparent 8px);
+            opacity: 0.3;
+        }
+
+        .icon-box {
+            background: #1a1a1a;
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(45deg);
+            border-radius: 12px;
+            border: 1px solid #333;
+            transition: 0.3s;
+        }
+        .service-card:hover .icon-box {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+        }
+        .icon-box i { transform: rotate(-45deg); }
+
+        .divider {
+            width: 30px;
+            height: 3px;
+            background-color: var(--primary-blue);
+            margin: 15px auto;
+        }
+
+        /* --- Diamond Process Flow --- */
+        .process-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            padding: 60px 0;
+        }
+        .diamond-box {
+            width: 130px;
+            height: 130px;
+            background: var(--card-bg);
+            border: 1px dashed #444;
+            transform: rotate(45deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+        .diamond-box:nth-child(even) { margin-top: 60px; }
+        .diamond-content {
+            transform: rotate(-45deg);
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .diamond-box:hover {
+            border-color: var(--accent-purple);
+            box-shadow: 0 0 20px rgba(124, 77, 255, 0.2);
+        }
+
+        /* --- Portfolio Grid --- */
+        .portfolio-img {
+           
+            transition: 0.4s ease;
+            cursor: pointer;
+        }
+        .portfolio-img:hover {
+            
+            transform: scale(1.02);
+        }
+
+        /* --- Team Section --- */
+        .image-container {
+            background: #1a1a1a;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            position: relative;
+            height: 200px;
+            width: 200px;
+            background-image: radial-gradient(circle at top left, #333 0%, transparent 70%);
+        }
+        .team-card img {
+            width: 100%;
+            filter: grayscale(100%);
+            transition: 0.3s ease;
+        }
+        .team-card:hover img { filter: grayscale(0%); }
+
+        .btn-gradient {
+            background: linear-gradient(90deg, var(--primary-blue) 0%, var(--accent-purple) 100%);
+        }
+
+        .btn-outline {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            transition: 0.3s;
+        }
+        .btn-outline:hover {
+            background-color: var(--primary-blue);
+            border-color: var(--primary-blue);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="fixed w-full top-0 z-50 px-8 py-4 flex justify-between items-center">
+        <div class="text-xl font-bold italic"><span class="text-blue-500">&bull;</span> designer</div>
+        <nav class="hidden md:flex space-x-8 text-sm text-gray-400">
+            <a href="#home" class="hover:text-white transition">Home</a>
+            <a href="#services" class="hover:text-white transition">Services</a>
+            <a href="#projects" class="hover:text-white transition">Projects</a>
+            <a href="#team" class="hover:text-white transition">Team</a>
+            <a href="#about" class="hover:text-white transition">About</a>
+        </nav>
+        <a href="#contact" class="btn-gradient px-6 py-2 rounded-full text-xs font-bold hover:scale-105 transition transform shadow-lg">Discuss For Projects</a>
+    </header>
+
+    <section id="home" class="min-h-screen flex flex-col md:flex-row items-center justify-between px-8 md:px-24 pt-32 pb-12">
+        <div class="md:w-1/2 space-y-6">
+            <h1 class="text-5xl md:text-7xl font-bold leading-tight">
+                This is your designer<br>
+                <span class="text-blue-600">Jainam Kahar</span>
+            </h1>
+            <p class="text-gray-400 max-w-md">
+                Crafting digital experiences that merge functionality with high-end aesthetics. Specialized in branding and UI/UX solutions.
+            </p>
+            <div class="flex items-center space-x-6">
+                <a href="#contact" class="btn-gradient px-8 py-3 rounded-full text-sm font-bold">Discuss For Projects</a>
+                <a href="#projects" class="text-sm font-semibold hover:text-blue-400 transition">View Portfolios &rarr;</a>
+            </div>
+        </div>
+        <div class="md:w-1/2 mt-12 md:mt-0 relative flex justify-center">
+            <img src="c:\Users\ABC\Downloads\d.jpeg" alt="Esther Howard" lass="w-full max-w-md grayscale border-b-4 border-blue-600 shadow-2xl">
+        </div>
+    </section>
+
+    <section id="services" class="py-24 px-8 bg-[#0d0d0d]">
+        <div class="max-w-6xl mx-auto text-center mb-16">
+            <span class="uppercase tracking-widest text-xs text-gray-500 font-bold">Speciality</span>
+            <h2 class="text-4xl font-bold mt-2">My <span class="text-blue-500">specialities</span></h2>
+        </div>
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="service-card p-10 rounded-2xl text-center">
+                <div class="text-purple-500 text-3xl mb-6"><i class="fas fa-bezier-curve"></i></div>
+                <h3 class="text-xl font-bold mb-4">Digital Branding</h3>
+                <p class="text-gray-400 text-sm">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.</p>
+            </div>
+            <div class="service-card p-10 rounded-2xl text-center border-blue-500">
+                <div class="text-blue-500 text-3xl mb-6"><i class="fas fa-pen-nib"></i></div>
+                <h3 class="text-xl font-bold mb-4">Creative Solutions</h3>
+                <p class="text-gray-400 text-sm">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.</p>
+            </div>
+            <div class="service-card p-10 rounded-2xl text-center">
+                <div class="text-purple-500 text-3xl mb-6"><i class="fas fa-bullhorn"></i></div>
+                <h3 class="text-xl font-bold mb-4">Marketing Solutions</h3>
+                <p class="text-gray-400 text-sm">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.</p>
+            </div>
+        </div>
+    </section> 
+    
+    <section class="py-24 px-8 overflow-hidden">
+        <div class="max-w-6xl mx-auto text-center">
+            <span class="uppercase tracking-widest text-xs text-gray-500 font-bold">Process</span>
+            <h2 class="text-4xl font-bold mt-2 mb-12">My <span class="text-purple-500">work process</span></h2>
+            <div class="process-container">
+                <div class="diamond-box"><div class="diamond-content">Empathize</div></div>
+                <div class="diamond-box"><div class="diamond-content">Define</div></div>
+                <div class="diamond-box"><div class="diamond-content">Ideate</div></div>
+                <div class="diamond-box"><div class="diamond-content">Prototype</div></div>
+                <div class="diamond-box"><div class="diamond-content">Qualitative<br>test</div></div>
+                <div class="diamond-box"><div class="diamond-content">Quantitative<br>test</div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 px-8 bg-[#0d0d0d]">
+        <div class="max-w-6xl mx-auto text-center mb-16">
+            <span class="uppercase tracking-widest text-xs text-gray-500 font-bold">Speciality</span>
+            <h2 class="text-4xl font-bold mt-2">My <span class="text-blue-500">specialities</span></h2>
+        </div>
+        
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="service-card p-10 rounded-2xl text-center">
+                <div class="icon-box"><i class="fas fa-project-diagram"></i></div>
+                <h3 class="text-xl font-bold">Digital branding</h3>
+                <div class="divider"></div>
+                <p class="text-gray-400 text-sm mb-6">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.</p>
+                <a href="#" class="btn-outline px-6 py-2 rounded-full text-xs inline-flex items-center gap-2">Discuss for Projects <i class="fas fa-arrow-right text-[10px]"></i></a>
+            </div>
+
+            <div class="service-card p-10 rounded-2xl text-center">
+                <div class="icon-box"><i class="fas fa-pen-nib"></i></div>
+                <h3 class="text-xl font-bold">Creative solutions</h3>
+                <div class="divider"></div>
+                <p class="text-gray-400 text-sm mb-6">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.</p>
+                <a href="#" class="btn-outline px-6 py-2 rounded-full text-xs inline-flex items-center gap-2">Discuss for Projects <i class="fas fa-arrow-right text-[10px]"></i></a>
+            </div>
+
+            <div class="service-card p-10 rounded-2xl text-center">
+                <div class="icon-box"><i class="fas fa-bullhorn"></i></div>
+                <h3 class="text-xl font-bold">Marketing solutions</h3>
+                <div class="divider"></div>
+                <p class="text-gray-400 text-sm mb-6">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.</p>
+                <a href="#" class="btn-outline px-6 py-2 rounded-full text-xs inline-flex items-center gap-2">Discuss for Projects <i class="fas fa-arrow-right text-[10px]"></i></a>
+            </div>
+
+            <div class="service-card p-10 rounded-2xl text-center">
+                <div class="icon-box"><i class="fas fa-chart-pie"></i></div>
+                <h3 class="text-xl font-bold">Business analytics</h3>
+                <div class="divider"></div>
+                <p class="text-gray-400 text-sm mb-6">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.</p>
+                <a href="#" class="btn-outline px-6 py-2 rounded-full text-xs inline-flex items-center gap-2">Discuss for Projects <i class="fas fa-arrow-right text-[10px]"></i></a>
+            </div>
+
+            <div class="service-card p-10 rounded-2xl text-center">
+                <div class="icon-box"><i class="fas fa-desktop"></i></div>
+                <h3 class="text-xl font-bold">UI & UX Design</h3>
+                <div class="divider"></div>
+                <p class="text-gray-400 text-sm mb-6">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.</p>
+                <a href="#" class="btn-outline px-6 py-2 rounded-full text-xs inline-flex items-center gap-2">Discuss for Projects <i class="fas fa-arrow-right text-[10px]"></i></a>
+            </div>
+
+            <div class="service-card p-10 rounded-2xl text-center">
+                <div class="icon-box"><i class="fas fa-camera"></i></div>
+                <h3 class="text-xl font-bold">Photography</h3>
+                <div class="divider"></div>
+                <p class="text-gray-400 text-sm mb-6">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.</p>
+                <a href="#" class="btn-outline px-6 py-2 rounded-full text-xs inline-flex items-center gap-2">Discuss for Projects <i class="fas fa-arrow-right text-[10px]"></i></a>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="projects" class="py-24 px-8 bg-[#0d0d0d]">
+        <div class="max-w-6xl mx-auto text-center mb-16">
+            <span class="uppercase tracking-widest text-xs text-gray-500 font-bold">Portfolio</span>
+            <h2 class="text-4xl font-bold mt-2">My <span class="text-blue-500">completed projects</span></h2>
+        </div>
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-4 mb-12">
+            <div class="md:col-span-1"><img src="c:\Users\ABC\Downloads\a.jpeg" class="portfolio-img rounded-xl w-full h-64 object-cover"></div>
+            <div class="md:col-span-2"><img src="c:\Users\ABC\Downloads\b.jpeg" class="portfolio-img rounded-xl w-full h-64 object-cover"></div>
+            <div class="md:col-span-1"><img src="c:\Users\ABC\Downloads\c.jpeg" class="portfolio-img rounded-xl w-full h-64 object-cover"></div>
+            <div class="md:col-span-2"><img src="c:\Users\ABC\Downloads\d1.jpeg" class="portfolio-img rounded-xl w-full h-64 object-cover"></div>
+            <div class="md:col-span-2"><img src="c:\Users\ABC\Downloads\e.jpeg" class="portfolio-img rounded-xl w-full h-64 object-cover"></div>
+        </div>
+        <div class="text-center">
+            <button class="btn-gradient px-10 py-4 rounded-full font-bold text-sm hover:scale-105 transition transform shadow-lg">View All Projects</button>
+        </div>
+    </section>
+
+     </section>
+
+     <section id="about" class="py-24 px-8 max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16">
+        <div class="md:w-1/2 relative">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600" alt="Professional" class="rounded-2xl grayscale brightness-75">
+            <div class="absolute -bottom-6 -right-6 bg-blue-600 rounded-full w-28 h-28 flex items-center justify-center text-[10px] text-center font-bold border-8 border-[#0a0a0a] leading-tight">
+                100% SKILLED<br>IN DESIGN
+            </div>
+        </div>
+        <div class="md:w-1/2 space-y-6">
+            <i class="fas fa-quote-left text-5xl text-gray-800"></i>
+            <h2 class="text-3xl font-bold">"Service is good and I recommend to everyone"</h2>
+            <div class="text-gray-400 space-y-4 leading-relaxed">
+                <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p>
+            </div>
+            <div class="pt-6">
+                <p class="font-bold text-xl italic tracking-widest">Jainam Kahar</p>
+                <div class="w-20 h-1 bg-blue-600 mt-2"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="py-24 px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="uppercase tracking-widest text-xs text-gray-500 font-bold">Teams</span>
+                <h2 class="text-4xl font-bold mt-2">My <span class="text-blue-500">team members</span></h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="team-card text-center">
+                    <div class="image-container"><img src="c:\Users\ABC\Downloads\pr.jpeg"></div>
+                    <h3 class="font-bold text-lg">UI & UX Design</h3>
+                    <p class="text-sm text-gray-400">Amet minim mollit non deserunt.</p>
+                </div>
+                <div class="team-card text-center">
+                    <div class="image-container"><img src="c:\Users\ABC\Downloads\ha.jpeg"></div>
+                    <h3 class="font-bold text-lg">Product Designer</h3>
+                    <p class="text-sm text-gray-400">Amet minim mollit non deserunt.</p>
+                </div>
+                <div class="team-card text-center">
+                    <div class="image-container"><img src="c:\Users\ABC\Downloads\ja.jpeg"></div>
+                    <h3 class="font-bold text-lg">Marketing Lead</h3>
+                    <p class="text-sm text-gray-400">Amet minim mollit non deserunt.</p>
+                </div>
+                <div class="team-card text-center">
+                    <div class="image-container"><img src="c:\Users\ABC\Downloads\vs.jpeg"></div>
+                    <h3 class="font-bold text-lg">Developer</h3>
+                    <p class="text-sm text-gray-400">Amet minim mollit non deserunt.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+
+    <section id="contact" class="px-8 pb-24">
+        <div class="max-w-6xl mx-auto bg-[#111] border border-gray-800 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl">
+            <div class="flex items-center gap-6">
+                <div class="text-4xl text-blue-500"><i class="fas fa-paper-plane"></i></div>
+                <div>
+                    <h3 class="text-2xl font-bold">Have any project idea?</h3>
+                    <p class="text-gray-400 text-sm">Let's build something incredible together.</p>
+                </div>
+            </div>
+            <a href="#" class="btn-gradient px-10 py-4 rounded-full text-sm font-bold whitespace-nowrap shadow-lg">Contact Now</a>
+        </div>
+    </section>
+
+    <footer class="bg-[#050505] pt-20 pb-10 px-8">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 border-t border-gray-900 pt-16">
+            <div class="space-y-6">
+                <div class="text-xl font-bold italic text-blue-500">● designer</div>
+                <p class="text-gray-400 text-sm leading-relaxed">Innovative designs and creative strategies for the modern digital landscape.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 bg-gray-900 flex items-center justify-center rounded-lg hover:bg-blue-600 transition"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="w-10 h-10 bg-gray-900 flex items-center justify-center rounded-lg hover:bg-blue-600 transition"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6">Quick link</h4>
+                <ul class="text-gray-400 text-sm space-y-4">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Service</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6">Important</h4>
+                <ul class="text-gray-400 text-sm space-y-4">
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="space-y-4 text-sm text-gray-400">
+                <h4 class="font-bold text-white mb-6">Contacts</h4>
+                <p class="flex items-center gap-3"><i class="fas fa-phone text-blue-500"></i> +223 456 789</p>
+                <p class="flex items-center gap-3"><i class="fas fa-envelope text-blue-500"></i> example@gmail.com</p>
+            </div>
+        </div>
+        <div class="text-center mt-20 text-gray-600 text-xs">
+            Copyright 2026 | All Rights Reserved
+        </div>
+    </footer>
+
+    <script>
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .portfolio-img, .team-card, #contact > div').forEach(el => {
+            el.classList.add('opacity-0', 'translate-y-10', 'transition', 'duration-700');
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
