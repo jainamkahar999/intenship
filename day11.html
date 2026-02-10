@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Create New Invoice</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== BASE ===== */
+body {
+  font-family: Inter, system-ui, sans-serif;
+  background: #f4f6fb;
+  color: #111827;
+}
+
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  width: 80px;
+  background: #fff;
+  border-right: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.brand {
+  width: 44px;
+  height: 44px;
+  background: #2563eb;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.menu div {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.menu div.active,
+.menu div:hover {
+  background: #eef2ff;
+  color: #2563eb;
+}
+
+/* ===== MAIN ===== */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== HEADER ===== */
+.header {
+  height: 70px;
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+.search {
+  width: 300px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  background: #e5e7eb;
+  border-radius: 50%;
+}
+
+/* ===== CONTENT ===== */
+.content {
+  padding: 24px;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.actions button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  cursor: pointer;
+}
+
+.actions .primary {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+}
+
+/* ===== GRID ===== */
+.grid {
+  display: flex;
+  gap: 24px;
+}
+
+/* ===== LEFT FORM ===== */
+.form-box {
+  width: 40%;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.form-box h2 {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.form-box p {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 16px;
+}
+
+/* Accordion */
+.accordion {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.accordion-header {
+  padding: 12px 14px;
+  background: #f9fafb;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.accordion-body {
+  display: none;
+  padding: 12px 14px;
+  font-size: 13px;
+  color: #6b7280;
+  background: #fff;
+}
+
+.accordion.active .accordion-body {
+  display: block;
+}
+
+.save-btn {
+  margin-top: 18px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: #e5e7eb;
+  color: #6b7280;
+}
+
+/* ===== INVOICE PREVIEW ===== */
+.preview {
+  flex: 1;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.preview-header h1 {
+  font-size: 26px;
+}
+
+.preview-header span {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.info strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+  text-align: left;
+}
+
+th {
+  color: #6b7280;
+}
+
+.total {
+  text-align: right;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.note {
+  font-size: 13px;
+  color: #6b7280;
+  border: 1px solid #e5e7eb;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.payment {
+  font-size: 14px;
+  margin-bottom: 40px;
+}
+
+.signature {
+  text-align: right;
+  font-size: 14px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1100px) {
+  .grid {
+    flex-direction: column;
+  }
+  .form-box {
+    width: 100%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">C</div>
+    <div class="menu">
+      <div class="active">🏠</div>
+      <div>📄</div>
+      <div>👥</div>
+      <div>⚙️</div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- HEADER -->
+    <header class="header">
+      <input class="search" placeholder="Search..." />
+      <div class="profile">
+        <span>Padaya Prince</span>
+        <div  scr="C:\Users\paday\OneDrive\Desktop\WhatsApp Image 2026-01-29 at 3.48.13 PM.jpeg"></div>
+      </div>
+    </header>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+      <div class="top-bar">
+        <strong>Create New Invoice</strong>
+        <div class="actions">
+          <button>PDF</button>
+          <button>Email</button>
+          <button>Online Payment</button>
+          <button class="primary">Save Invoice</button>
+        </div>
+      </div>
+
+      <div class="grid">
+
+        <!-- LEFT -->
+        <div class="form-box">
+          <h2>Invoice Builder</h2>
+          <p>Fill in invoice details</p>
+
+          <div class="accordion active">
+            <div class="accordion-header">My Details</div>
+            <div class="accordion-body">Business name, address, contact info</div>
+          </div>
+
+          <div class="accordion">
+            <div class="accordion-header">Client Details</div>
+            <div class="accordion-body">Client name, address, email</div>
+          </div>
+
+          <div class="accordion">
+            <div class="accordion-header">Invoice Details</div>
+            <div class="accordion-body">Invoice number, dates</div>
+          </div>
+
+          <div class="accordion">
+            <div class="accordion-header">Payment Details</div>
+            <div class="accordion-body">Bank / UPI / Cash</div>
+          </div>
+
+          <div class="accordion">
+            <div class="accordion-header">Add Notes</div>
+            <div class="accordion-body">Extra notes</div>
+          </div>
+
+          <div class="accordion">
+            <div class="accordion-header">Add Signature</div>
+            <div class="accordion-body">Digital signature</div>
+          </div>
+
+          <div class="accordion">
+            <div class="accordion-header">Email Details</div>
+            <div class="accordion-body">Send invoice to client</div>
+          </div>
+
+          <button class="save-btn">Save Invoice</button>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="preview">
+          <div class="preview-header">
+            <div>
+              <h1>Invoice</h1>
+              <span>#12346</span>
+            </div>
+            <div class="logo">Clario</div>
+          </div>
+
+          <div class="info">
+            <div>
+              <strong>From</strong>
+              Washim Chowdhury<br>Sylhet, Bangladesh
+            </div>
+            <div>
+              <strong>To</strong>
+              Tony Stark<br>Mirabazar, Bangladesh
+            </div>
+            <div>
+              <strong>Issued</strong> Feb 15, 2025<br>
+              <strong>Due</strong> Feb 20, 2025
+            </div>
+          </div>
+
+          <table>
+            <tr>
+              <th>Description</th>
+              <th>Units</th>
+              <th>Price</th>
+              <th>GST</th>
+              <th>Amount</th>
+            </tr>
+            <tr>
+              <td>Web & App Design</td>
+              <td>1</td>
+              <td>$2500</td>
+              <td>0.00</td>
+              <td>$2500</td>
+            </tr>
+            <tr>
+              <td>Logo Design</td>
+              <td>1</td>
+              <td>$500</td>
+              <td>0.00</td>
+              <td>$500</td>
+            </tr>
+          </table>
+
+          <div class="total">Total Amount: $3000.00</div>
+
+          <div class="note">
+            Late payment fee of 10% per annum after due date.
+          </div>
+
+          <div class="payment">
+            <strong>Payment Method</strong><br>
+            Bank Transfer
+          </div>
+
+          <div class="signature">
+            Washim Chowdhury
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('.accordion-header').forEach(header => {
+  header.addEventListener('click', () => {
+    header.parentElement.classList.toggle('active');
+  });
+});
+</script>
+
+</body>
+</html>
